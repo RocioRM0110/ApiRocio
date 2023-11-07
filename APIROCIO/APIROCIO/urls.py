@@ -21,8 +21,9 @@ urlpatterns = [
 
     path('', Index.as_view(), name='Index'),
     path('registro/', registro, name='registro'),  # Usa la vista basada en función
-    path('iniciar_sesion/', iniciar_sesion, name='iniciar_sesion'),
-
+    path('', Index.as_view(), name='Index'),
+    path('', Calendars.as_view(), name='Calendars'),
+    
 
     # Otras rutas de tu aplicación
 ]

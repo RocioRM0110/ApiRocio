@@ -54,6 +54,7 @@ class registroU(APIView):
     template_name = "registro.html"
     def get(self, request):
         return render(request, self.template_name)
+        
     
 class Index(APIView): 
     template_name="index.html"
