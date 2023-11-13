@@ -17,6 +17,7 @@ Including another URLconf
 from django.urls import path
 from api.views import *
 
+
 urlpatterns = [
 
     path('index.html', Index.as_view(), name='Index'),
@@ -38,6 +39,6 @@ urlpatterns = [
     path('timeline.html', Timeline.as_view(), name='timeline'),
     path('typography.html', Typography.as_view(), name='typography'),
     
-
-    # Otras rutas de tu aplicación
+#     # Otra URL para tus vistas
+#     path('chart/', chart_view, name='chart_view')
 ]
