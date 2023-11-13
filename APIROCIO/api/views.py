@@ -133,10 +133,3 @@ class Typography(APIView):
         return render(request,self.template_name)
 
 
-def chart_view(request):
-    #Precios
-    precios1 = General.objects.filter(precios="$250").count()
-    precios2 = General.objects.filter(precios="$300").count()
-    precios3 = General.objects.filter(precios="$350").count()
-    precios4 = General.objects.filter(precios="$400").count()
-    
