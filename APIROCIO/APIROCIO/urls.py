@@ -37,7 +37,7 @@ urlpatterns = [
     path('navs.html', Navs.as_view(), name='navs'),
     path('panels.html', Panels.as_view(), name='panels'),
     path('timeline.html', Timeline.as_view(), name='timeline'),
-    path('typography.html', Typography.as_view(), name='typography'),
+    path('typography.html', Typography.as_view(), name='typography')
     
 #     # Otra URL para tus vistas
 #     path('chart/', chart_view, name='chart_view')

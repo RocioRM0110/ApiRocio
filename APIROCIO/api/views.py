@@ -7,8 +7,7 @@ from rest_framework.views import APIView
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.shortcuts import render
-import json
-from app.views import chart_view
+
 
 
 def registro(request):
