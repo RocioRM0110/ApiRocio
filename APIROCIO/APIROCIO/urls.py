@@ -20,9 +20,11 @@ from api.views import *
 
 urlpatterns = [
 
+
     path('index.html', Index.as_view(), name='Index'),
     path('registro/', registro, name='registro'),  # Usa la vista basada en función
-    
+    path('iniciar_sesion/', iniciar_sesion, name='iniciar_sesion'),
+    #path('', Home.as_view(), name='login'),
     path('alerts.html', Alerts.as_view(), name='alerts'),
     path('colors.html', Colors.as_view(), name='colors'),
     path('calendars.html', Calendars.as_view(), name='calendars'),
@@ -37,8 +39,7 @@ urlpatterns = [
     path('navs.html', Navs.as_view(), name='navs'),
     path('panels.html', Panels.as_view(), name='panels'),
     path('timeline.html', Timeline.as_view(), name='timeline'),
-    path('typography.html', Typography.as_view(), name='typography')
-    
-#     # Otra URL para tus vistas
-#     path('chart/', chart_view, name='chart_view')
+    path('typography.html', Typography.as_view(), name='typography'),
+
+
 ]
