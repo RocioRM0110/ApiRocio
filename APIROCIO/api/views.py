@@ -6,9 +6,6 @@ from django.contrib.auth.views import LoginView
 from rest_framework.views import APIView
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-from django.shortcuts import render
-
-
 
 def registro(request):
     if request.method == 'POST':
@@ -57,7 +54,6 @@ class registroU(APIView):
     template_name = "registro.html"
     def get(self, request):
         return render(request, self.template_name)
-        
     
 class Index(APIView): 
     template_name="index.html"
@@ -65,86 +61,3 @@ class Index(APIView):
         return render(request,self.template_name)
     def post(self,request):
         return render(request,self.template_name)
-class Alerts(APIView): 
-    template_name="alerts.html"
-    def get(self,request):
-        return render(request,self.template_name)
-    
-class Colors(APIView): 
-    template_name="colors.html"
-    def get(self,request):
-        return render(request,self.template_name)
-    
-class Calendars(APIView): 
-    template_name="calendars.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Flex(APIView): 
-    template_name="flex.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Footers(APIView): 
-    template_name="footers.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Forms(APIView): 
-    template_name="forms.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Getting(APIView): 
-    template_name="getting-started.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Icons(APIView): 
-    template_name="icons.html"
-    def get(self,request):
-        return render(request,self.template_name)
-    
-class List(APIView): 
-    template_name="list.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Login(APIView): 
-    template_name=" login.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Navs(APIView): 
-    template_name="navs.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Panels(APIView): 
-    template_name="panels.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Timeline(APIView): 
-    template_name="timeline.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-class Typography(APIView): 
-    template_name="typography.html"
-    def get(self,request):
-        return render(request,self.template_name)
-
-
-# def chart_view(request):
-#     # Datos de ejemplo para el gráfico de barras
-#     labels = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo']
-#     data = [10, 20, 15, 25, 30]
-
-#     # Convierte los datos a formato JSON para pasarlos al contexto de la plantilla
-#     chart_data = json.dumps({
-#         'labels': labels,
-#         'data': data,
-#     })
-
-#     return render(request, 'dash.html', {'chart_data': chart_data})
