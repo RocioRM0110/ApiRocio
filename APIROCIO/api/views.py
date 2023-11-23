@@ -6,6 +6,7 @@ from django.contrib.auth.views import LoginView
 from rest_framework.views import APIView
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+<<<<<<< HEAD
 from django.shortcuts import render
 
 
@@ -13,6 +14,8 @@ from django.urls import reverse
 
 
 
+=======
+>>>>>>> 7db5170f0b9cf5861251aac1be956fb0a7bfd157
 
 def registro(request):
     if request.method == 'POST':
@@ -61,6 +64,7 @@ class registroU(APIView):
     template_name = "registro.html"
     def get(self, request):
         return render(request, self.template_name)
+<<<<<<< HEAD
 
 class Maps(APIView):
     template_name = "maps.html"
@@ -68,12 +72,16 @@ class Maps(APIView):
         return render(request, self.template_name)
         
         
+=======
+    
+>>>>>>> 7db5170f0b9cf5861251aac1be956fb0a7bfd157
 class Index(APIView): 
     template_name="index.html"
     def get(self,request):
         return render(request,self.template_name)
     def post(self,request):
         return render(request,self.template_name)
+<<<<<<< HEAD
 class Alerts(APIView): 
     template_name="alerts.html"
     def get(self,request):
@@ -155,3 +163,5 @@ class Index1(APIView):
         return render(request,self.template_name)
 
 
+=======
+>>>>>>> 7db5170f0b9cf5861251aac1be956fb0a7bfd157

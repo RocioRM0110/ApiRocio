@@ -15,6 +15,7 @@ Including another URLconf
 """
 
 from django.urls import path
+<<<<<<< HEAD
 from api.views import *
 
 urlpatterns = [
@@ -48,6 +49,16 @@ urlpatterns = [
 
     
 
+=======
+from api.views import Index, iniciar_sesion, registro
+
+urlpatterns = [
+
+    path('', Index.as_view(), name='Index'),
+    path('registro/', registro, name='registro'),  # Usa la vista basada en función
+    path('iniciar_sesion/', iniciar_sesion, name='iniciar_sesion'),
+>>>>>>> 7db5170f0b9cf5861251aac1be956fb0a7bfd157
 
 
+    # Otras rutas de tu aplicación
 ]
