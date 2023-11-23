@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Marker</title>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoy5VmJvLVcCaJMMIkBIxsgFJ4eg5JSYM&callback=console.debug&libraries=maps,marker&v=beta"></script>
+    <link rel="stylesheet" href="./style.css"/>
+    <style>
+        /* Estilo para limitar el tamaño del contenedor del mapa */
+        #map-container {
+            width: 400px; /* ajusta el ancho según tus necesidades */
+            height: 300px; /* ajusta la altura según tus necesidades */
+            margin: 20px auto; /* para centrar el contenedor en la página */
+            border: 1px solid #ccc; /* borde para resaltar el área del mapa */
+        }
+
+        /* Ajuste opcional para centrar el mapa en el contenedor */
+        gmp-map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map-container">
+        <gmp-map center="19.41267204284668,-98.92762756347656" zoom="14" map-id="DEMO_MAP_ID">
+            <gmp-advanced-marker position="19.41267204284668,-98.92762756347656" title="My location"></gmp-advanced-marker>
+        </gmp-map>
+    </div>
+</body>
+</html>

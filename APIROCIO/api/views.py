@@ -9,6 +9,10 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 
 
+from django.urls import reverse
+
+
+
 
 def registro(request):
     if request.method == 'POST':
@@ -57,8 +61,13 @@ class registroU(APIView):
     template_name = "registro.html"
     def get(self, request):
         return render(request, self.template_name)
+
+class Maps(APIView):
+    template_name = "maps.html"
+    def get(self, request):
+        return render(request, self.template_name)
         
-    
+        
 class Index(APIView): 
     template_name="index.html"
     def get(self,request):
@@ -72,6 +81,11 @@ class Alerts(APIView):
     
 class Colors(APIView): 
     template_name="colors.html"
+    def get(self,request):
+        return render(request,self.template_name)
+    
+class Dash(APIView): 
+    template_name="dash.html"
     def get(self,request):
         return render(request,self.template_name)
     
@@ -135,16 +149,9 @@ class Typography(APIView):
     def get(self,request):
         return render(request,self.template_name)
 
+class Index1(APIView): 
+    template_name="index1.html"
+    def get(self,request):
+        return render(request,self.template_name)
 
-# def chart_view(request):
-#     # Datos de ejemplo para el gráfico de barras
-#     labels = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo']
-#     data = [10, 20, 15, 25, 30]
 
-#     # Convierte los datos a formato JSON para pasarlos al contexto de la plantilla
-#     chart_data = json.dumps({
-#         'labels': labels,
-#         'data': data,
-#     })
-
-#     return render(request, 'dash.html', {'chart_data': chart_data})

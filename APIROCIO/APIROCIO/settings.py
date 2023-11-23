@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypal.standard.ipn',
+    
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -145,3 +149,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'chio7933@gmail.com'
 EMAIL_HOST_PASSWORD = 'neskijtsjonnndpt'
 DEFAULT_FROM_EMAIL = 'chio7933@gmail.com'
+
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# PAYPAL_RECEIVER_EMAIL = 'ramirezmelo221@gamil.com'
+# PAYPAL_TEST = True
