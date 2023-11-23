@@ -1,64 +1,76 @@
-"""APIROCIO URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-
-from django.urls import path
-<<<<<<< HEAD
-from api.views import *
-
-urlpatterns = [
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.hashers import check_password
+from rest_framework.views import APIView
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.views import View
 
 
-    path('', Index.as_view(), name='Index'),
-    path('registro/', registro, name='registro'),  # Usa la vista basada en función
-    path('iniciar_sesion/', iniciar_sesion, name='iniciar_sesion'),
-    #path('', Home.as_view(), name='login'),
-    path('alerts.html', Alerts.as_view(), name='alerts'),
-    path('dash.html', Dash.as_view(), name='dash'),
-    path('colors.html', Colors.as_view(), name='colors'),
-    path('calendars.html', Calendars.as_view(), name='calendars'),
-    path('flex.html', Flex.as_view(), name='flex'),
-    path('footers.html', Footers.as_view(), name='footers'),
-    path('forms.html', Forms.as_view(), name='forms'),
-    path('getting-started.html', Getting.as_view(), name='getting-started'),
-    path('icons.html', Icons.as_view(), name='icons'),
-    path('index1.html', Index1.as_view(), name='index1'),
+from django.urls import reverse
 
-
-    path('list.html', List.as_view(), name='list'),
-    # path('login.html', Login.as_view(), name='login'),
-    path('navs.html', Navs.as_view(), name='navs'),
-    path('panels.html', Panels.as_view(), name='panels'),
-    path('timeline.html', Timeline.as_view(), name='timeline'),
-    path('typography.html', Typography.as_view(), name='typography'),
-    path('maps.html', Maps.as_view(), name='maps'),
+class RegistroView(APIView):
+    template_name = "registro.html"
     
+    def get(self, request):
+        return render(request, self.template_name)
 
+    def post(self, request):
+        form = RegistroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            correo = form.cleaned_data['correo']
+            password = form.cleaned_data['password']
+            messages.success(request, 'El registro se ha creado con éxito.')
 
+            subject = 'Bienvenido a BURGER TOCHITOS'
+            from_email = 'chio7933@gmail.com'
+            recipient_list = [correo]
+            contexto = {'correo': correo, 'password': password}
+            contenido_correo = render_to_string('correo.html', contexto)
+            send_mail(subject, '', from_email, recipient_list, html_message=contenido_correo)
+
+            return redirect('iniciar_sesion')
+
+        return render(request, self.template_name, {'form': form})
+
+class IniciarSesionView(View):
+    template_name = "login.html"
+
+    def post(self, request):
+        correo = request.POST.get('correo')
+        password = request.POST.get('password')
+
+        try:
+            user = Registro.objects.get(correo=correo)
+            if check_password(password, user.password):
+                request.session['correo'] = user.correo
+                return redirect('Index')
+            else:
+                messages.error(request, 'Usuario o contraseña incorrectos.')
+        except Registro.DoesNotExist:
+            messages.error(request, 'Usuario o contraseña incorrectos.')
+
+        return render(request, self.template_name)
+
+class Maps(APIView):
+    template_name = "maps.html"
     
+    def get(self, request):
+        return render(request, self.template_name)
 
-=======
-from api.views import Index, iniciar_sesion, registro
+class Index(APIView): 
+    template_name = "index.html"
+    
+    def get(self, request):
+        return render(request, self.template_name)
+    
+    def post(self, request):
+        return render(request, self.template_name)
 
-urlpatterns = [
+class Alerts(View):
+    template_name = 'alerts.html'
 
-    path('', Index.as_view(), name='Index'),
-    path('registro/', registro, name='registro'),  # Usa la vista basada en función
-    path('iniciar_sesion/', iniciar_sesion, name='iniciar_sesion'),
->>>>>>> 7db5170f0b9cf5861251aac1be956fb0a7bfd157
-
-
-    # Otras rutas de tu aplicación
-]
+    def post(self, request):
+        return render(request, self.template_name)
